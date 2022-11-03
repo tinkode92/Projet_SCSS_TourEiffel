@@ -17,11 +17,6 @@ $bg-color:#222;
 $black-bg:rgba(17,17,17,.7);
 $border:.2rem solid grey;
 
-@mixin grid($val) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
-    gap:1.5rem;
-}
 
 html{
     font-size: 62.5%;
@@ -30,7 +25,7 @@ html{
     scroll-padding-top: 9rem;
 
     &::-webkit-scrollbar{
-        width:1rem;
+        width: 1rem;
     }
 
     &::-webkit-scrollbar-track{
@@ -129,11 +124,13 @@ section{
 }
 
 .home{
-    margin: 9rem auto 0;
+    margin:0 auto;
+    margin-top: 9rem;
     width: 90%;
     border-radius: 1rem;
+    background:linear-gradient($black-bg, $black-bg), url(../images/home-bg.jpg) no-repeat;
     background-size: cover;
-    background: linear-gradient($black-bg, $black-bg) url(../images/home-bg.jpg) no-repeat center;
+    background-position: center;
     display: flex;
     min-height: 80vh;
     align-items: center;
@@ -168,7 +165,8 @@ section{
 
 .book-form{
     width: 80%;
-    margin: -5rem auto 1rem;
+    margin:1rem auto;
+    margin-top: -5rem;
     background: $bg-color;
     border-radius: 1rem;
     box-shadow: 0 .5rem 1rem rgba(17,17,17,.3);
@@ -209,7 +207,8 @@ section{
     }
 }
   
-    .acote .box-container{
+.acote .box-container{
+    @mixin grid {
     @include grid(27rem);
 
     .box{
@@ -264,9 +263,10 @@ section{
         }
     }
 }
+}
 
 .evenements .box-container{
-    @include grid(32rem);
+
 
     .box{
         background: $bg-color;
@@ -318,24 +318,20 @@ section{
             font-size: 1.4rem;
             color:$light-color;
         }
-
-        
     }
 }
 
 
 .banner{
+    background:linear-gradient($black-bg, $black-bg), url(../images/banner-bg.jpg) no-repeat;
     background-size: cover;
+    background-position: center;
     padding:3rem 2rem;
-    background: linear-gradient($black-bg, $black-bg) url(../images/banner-bg.jpg) no-repeat fixed center;
+    background-attachment: fixed;
     text-align: center;
 
     .content{
-        
-        span{
-            font-size: 2rem;
-            color:grey;
-        }
+
 
         h3{
             font-size: 4rem;
@@ -343,20 +339,14 @@ section{
             margin-top: 1rem;
         }
 
-        p{
-            max-width: 60rem;
-            margin:1rem auto;
-            font-size: 1.4rem;
-            color:$light-color;
-            line-height: 2;
-        }
+
     }
 }
 
 .footer{
 
     .box-container{
-        @include grid(25rem);
+
 
         .box{
             padding:1rem 0;
@@ -365,22 +355,12 @@ section{
                 padding-bottom: 1rem;
             }
 
-            h3{
-                font-size: 2.2rem;
-                color:$white;
-                padding:1rem 0;
-            }
 
             p{
                 font-size: 1.4rem;
                 color:$light-color;
                 padding:1rem 0;
                 line-height: 2;
-
-                i{
-                    padding-right: .5rem;
-                    color:grey;
-                }
             }
 
             //media queries
@@ -440,9 +420,9 @@ section{
             }
         }
     }
-}
-        }} @media  (max-width:450px)
-         {
+}}}}
+
+@media (max-width:450px){
 
     html{
         font-size: 50%;
@@ -452,4 +432,4 @@ section{
         font-size: 2.7rem;
     }
 
-}}
+}
